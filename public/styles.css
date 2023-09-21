@@ -14,7 +14,7 @@ body {
 
 h1 {
   margin: 40px auto;
-  color: #ff0aa7;
+  color: #4ade80;
   text-align: center;
 }
 
@@ -30,7 +30,7 @@ li {
 }
 
 li h4 {
-  color: #ff0aa7;
+  color: #4ade80;
   margin: 0;
   text-transform: capitalize;
 }
@@ -75,7 +75,7 @@ select {
 button {
   color: white;
   border: 0;
-  background: #ff0aa7;
+  background: #4ade80;
   padding: 6px;
   min-width: 80px;
   border-radius: 4px;
