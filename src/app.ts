@@ -16,12 +16,15 @@ const record = new ListTemplate(ul);
 form.addEventListener('submit', (e: Event) => {
   e.preventDefault();
 
+  let values: [string, string, number];  // tuples
+  values = [to_from.value, details.value, amount.valueAsNumber];
+
   let doc: HasFormatter;
 
   if (paymentType.value === 'invoice') {
-    doc = new Invoice(to_from.value, details.value, amount.valueAsNumber);
+    doc = new Invoice(...values);
   } else {
-    doc = new Payment(to_from.value, details.value, amount.valueAsNumber);
+    doc = new Payment(...values);
   }
   record.render(doc, paymentType.value, 'end');
 })
@@ -61,7 +64,7 @@ const someOtherRes: Resource<number[]> = {
 
 
 
-// ENUMS
+/* // ENUMS
 
 enum ResourceType { SUN, MON, TUE, WED };
 
@@ -85,4 +88,12 @@ const res3: Resource = {
 
 console.log(res1);
 console.log(res2);
-console.log(res3);
+console.log(res3); */
+
+
+/* TUPLES
+
+let tup: [string, number, boolean] = ['foo', 22, true];
+
+// tup[0] = 44; // not allowed
+// tup[0] = 'bar' // allowed */

@@ -11,12 +11,14 @@ const ul = document.querySelector('.item-list');
 const record = new ListTemplate(ul);
 form.addEventListener('submit', (e) => {
     e.preventDefault();
+    let values; // tuples
+    values = [to_from.value, details.value, amount.valueAsNumber];
     let doc;
     if (paymentType.value === 'invoice') {
-        doc = new Invoice(to_from.value, details.value, amount.valueAsNumber);
+        doc = new Invoice(...values);
     }
     else {
-        doc = new Payment(to_from.value, details.value, amount.valueAsNumber);
+        doc = new Payment(...values);
     }
     record.render(doc, paymentType.value, 'end');
 });
@@ -51,27 +53,34 @@ const someOtherRes: Resource<number[]> = {
   age: 44,
   data: [1, 2, 3, 4, 5]
 } */
-// ENUMS
-var ResourceType;
-(function (ResourceType) {
-    ResourceType[ResourceType["SUN"] = 0] = "SUN";
-    ResourceType[ResourceType["MON"] = 1] = "MON";
-    ResourceType[ResourceType["TUE"] = 2] = "TUE";
-    ResourceType[ResourceType["WED"] = 3] = "WED";
-})(ResourceType || (ResourceType = {}));
-;
-const res1 = {
-    type: ResourceType.SUN,
-    data: 'foo'
-};
-const res2 = {
-    type: ResourceType.TUE,
-    data: 'foo'
-};
-const res3 = {
-    type: ResourceType.WED,
-    data: 'foo'
-};
+/* // ENUMS
+
+enum ResourceType { SUN, MON, TUE, WED };
+
+interface Resource {
+  type: number;
+  data: string;
+}
+
+const res1: Resource = {
+  type: ResourceType.SUN, // store not the actual value but the index
+  data: 'foo'
+}
+const res2: Resource = {
+  type: ResourceType.TUE,
+  data: 'foo'
+}
+const res3: Resource = {
+  type: ResourceType.WED,
+  data: 'foo'
+}
+
 console.log(res1);
 console.log(res2);
-console.log(res3);
+console.log(res3); */
+/* TUPLES
+
+let tup: [string, number, boolean] = ['foo', 22, true];
+
+// tup[0] = 44; // not allowed
+// tup[0] = 'bar' // allowed */
