@@ -51,3 +51,27 @@ const someOtherRes: Resource<number[]> = {
   age: 44,
   data: [1, 2, 3, 4, 5]
 } */
+// ENUMS
+var ResourceType;
+(function (ResourceType) {
+    ResourceType[ResourceType["SUN"] = 0] = "SUN";
+    ResourceType[ResourceType["MON"] = 1] = "MON";
+    ResourceType[ResourceType["TUE"] = 2] = "TUE";
+    ResourceType[ResourceType["WED"] = 3] = "WED";
+})(ResourceType || (ResourceType = {}));
+;
+const res1 = {
+    type: ResourceType.SUN,
+    data: 'foo'
+};
+const res2 = {
+    type: ResourceType.TUE,
+    data: 'foo'
+};
+const res3 = {
+    type: ResourceType.WED,
+    data: 'foo'
+};
+console.log(res1);
+console.log(res2);
+console.log(res3);

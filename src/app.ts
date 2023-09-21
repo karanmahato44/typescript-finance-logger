@@ -59,3 +59,30 @@ const someOtherRes: Resource<number[]> = {
   data: [1, 2, 3, 4, 5]
 } */
 
+
+
+// ENUMS
+
+enum ResourceType { SUN, MON, TUE, WED };
+
+interface Resource {
+  type: number;
+  data: string;
+}
+
+const res1: Resource = {
+  type: ResourceType.SUN, // store not the actual value but the index
+  data: 'foo'
+}
+const res2: Resource = {
+  type: ResourceType.TUE,
+  data: 'foo'
+}
+const res3: Resource = {
+  type: ResourceType.WED,
+  data: 'foo'
+}
+
+console.log(res1);
+console.log(res2);
+console.log(res3);
