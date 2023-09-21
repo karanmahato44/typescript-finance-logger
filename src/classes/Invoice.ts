@@ -1,4 +1,6 @@
-export class Invoice {
+import { HasFormatter } from "../interfaces/HasFormatter.js";
+
+export class Invoice implements HasFormatter {
 
   constructor(
     readonly client: string,
@@ -7,7 +9,7 @@ export class Invoice {
   ) {
   }
 
-  message() {
+  format() {
     return `${this.client} owns ${this.details} ${this.amount}`;
   }
 }

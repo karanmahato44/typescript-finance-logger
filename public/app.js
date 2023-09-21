@@ -1,15 +1,21 @@
 import { Invoice } from "./classes/Invoice.js";
-const inv1 = new Invoice('kyto', 'karan', 100);
-const inv2 = new Invoice('foo', 'bar', 100);
-let invoices = [];
-invoices.push(inv1, inv2);
-console.log(invoices);
+import { Payment } from "./classes/Payment.js";
 const form = document.querySelector('.new-item-form');
 const paymentType = document.querySelector('#type');
 const to_from = document.querySelector('#tofrom');
 const details = document.querySelector('#details');
 const amount = document.querySelector('#amount');
+// let docOne: HasFormatter = new Invoice('karan', 'website work', 400);
+// let docTwo: HasFormatter = new Payment('kyto', 'graphics design', 200);
+// let docs: HasFormatter[] = [];
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    console.log(paymentType.value, to_from.value, details.value, amount.valueAsNumber);
+    let doc;
+    if (paymentType.value === 'invoice') {
+        doc = new Invoice(to_from.value, details.value, amount.valueAsNumber);
+    }
+    else {
+        doc = new Payment(to_from.value, details.value, amount.valueAsNumber);
+    }
+    console.log(doc);
 });
